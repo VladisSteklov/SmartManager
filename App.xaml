@@ -1,0 +1,83 @@
+﻿<Application x:Class="SmartfonManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SmartfonManager"
+             StartupUri="Register.xaml">
+    <Application.Resources>
+        <ImageBrush x:Key="MainFon" ImageSource="/Images/main_fon.jpg" Stretch="UniformToFill" TileMode="None"/>
+        <!--Стиль основого шрифта-->
+        <Style x:Key="FontStyle" TargetType="{x:Type Control}">
+            <Setter Property="FontFamily" Value="Verdana"/>
+        </Style>
+        <!--Стиль текстбоксов-->
+        <Style x:Key="FontMainTextBoxStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#FF1B2232"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <!--Стиль InfoBox-->
+        <Style x:Key="InfoBoxStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="10,5,10,5"/>
+            <Setter Property="FontFamily" Value="Lucida Sans"/>
+        </Style>
+        <!--Шаблон кнопок без рамки-->
+        <Style x:Key="WithoutBorderTemplate" TargetType="Button" BasedOn="{StaticResource FontStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Стиль градиентных кнопок-->
+        <Style x:Key="ButtonLoadStyle" TargetType="Button" BasedOn="{StaticResource WithoutBorderTemplate}">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0.9,0">
+                        <GradientStop Color="#FF0F1981" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE4B9B9" Offset="0"/>
+                                <GradientStop Color="#FF8B4242" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.07" ScaleY="1.07"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!--Триггер кнопок главного окна-->
+        <Style x:Key="ButtonMainStyle" TargetType="Button" BasedOn="{StaticResource WithoutBorderTemplate}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property = "IsMouseOver" Value = "True">
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.01" ScaleY="1.01"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>

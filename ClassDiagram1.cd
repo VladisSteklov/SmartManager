@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SmartfonManager.Controls.LoadToComputerControl" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAEAAABAAACAAAAAIAAAAAAYAAgAAA=</HashCode>
+      <FileName>Controls\LoadToComputerControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.Controls.LoadToTelephoneControl" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAQAAAAAAAAAQAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Controls\LoadToTelephoneControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.Controls.MainControl" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIAAAAAAAAAAIAAAAAAAAAQAQEAAAgAAQAAAAA=</HashCode>
+      <FileName>Controls\MainControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.Controls.SettingsWindow" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\SettingsDialog.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.Controls.ShowImageWindow" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAEAAAAAAAEAAAAAEAAAAAAAAAAAAAAAAAAQAAEAAA=</HashCode>
+      <FileName>Controls\ShowImageWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.Data.MyMediaFile" Collapsed="true">
+    <Position X="3.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAACRAAAABAAABAEAA=</HashCode>
+      <FileName>Data\MyMediaFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SmartfonManager.Services.InfoHelper" Collapsed="true">
+    <Position X="4.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAIAhAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\InfoHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.Services.MyMediaDevice" Collapsed="true">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAgAgAAAAAAAAAAAAAAAAAAIAACAAAAGAA=</HashCode>
+      <FileName>Services\MyMediaDevice.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.Source.FileFrameWork" Collapsed="true">
+    <Position X="11.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAgAAAAAAAAgAAAAAAAAAABAAAACAACAAAAgAAAA=</HashCode>
+      <FileName>Source\FileFrameWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SmartfonManager.Source.SpliterRow" Collapsed="true">
+    <Position X="11.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\SpliterRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.Converters.FileDataConverter" Collapsed="true">
+    <Position X="4.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\FileDataConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.Converters.FileSizeConverter" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\FileSizeConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.Converters.GridWidthConverter" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\GridWidthConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.LoadToTelephoneViewModel" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIACAwAAKAAAABAEgAAAAIAAAABAAAAAAAQ=</HashCode>
+      <FileName>ViewModel\LoadToTelephoneViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.MainWindowViewModel" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAkAQCAAIAAACCBAAAAAIEQAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.LoadToComputerViewModel" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAiAAABAAAgAAICAACQASgAAAACEA6AAIIBAAAIg=</HashCode>
+      <FileName>ViewModel\LoadToComputerViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.RegisterViewModel" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAEAAAAAAAAAQAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\RegisterViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.SettingsViewModel" Collapsed="true">
+    <Position X="11.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EMICAAAAiBAIABAQoggAQCAAwQMAAAEhiIBAAEBAAAA=</HashCode>
+      <FileName>ViewModel\SettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.ViewModel.ShowImageWindowViewModel" Collapsed="true">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAMAAAABBCAEAgQAISAACAAAgBAgQDEBQAAAgEBAEIA=</HashCode>
+      <FileName>ViewModel\ShowImageWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.App" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SmartfonManager.MainWindow" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIACAIAAAAgKQAAQAAAAACAAAAAAAQAAAARAAAAAIKA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartfonManager.Register" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Register.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="SmartfonManager.Source.Interfaces.IGivingData" Collapsed="true">
+    <Position X="7" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAACAAAEAAMAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Interfaces\IGivingData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SmartfonManager.Source.Interfaces.ITakingSortParameters" Collapsed="true">
+    <Position X="9" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Source\Interfaces\ITakingSortParameters.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SmartfonManager.Data.TypeFile" Collapsed="true">
+    <Position X="6" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAEAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Data\MyMediaFile.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SmartfonManager.ViewModel.TypeSortOrder" Collapsed="true">
+    <Position X="9.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAQAAAAA=</HashCode>
+      <FileName>ViewModel\LoadToComputerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SmartfonManager.ViewModel.TypeSort" Collapsed="true">
+    <Position X="7.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAIAAAAAFAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\LoadToComputerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

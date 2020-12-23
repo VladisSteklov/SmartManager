@@ -1,0 +1,238 @@
+﻿<UserControl x:Class="SmartfonManager.Controls.LoadToComputerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SmartfonManager.Controls"
+             xmlns:converters="clr-namespace:SmartfonManager.ViewModel.Converters"
+             xmlns:data="clr-namespace:SmartfonManager.Data"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="724">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="NoScroll">
+            <ItemsPresenter></ItemsPresenter>
+        </ControlTemplate>
+        <converters:GridWidthConverter x:Key="ConverterWidth"/>
+        <converters:FileSizeConverter x:Key="ConverterFileSize"/>
+        <converters:FileDataConverter x:Key="ConverterFileData"/>
+        <Style TargetType="Button" BasedOn="{StaticResource WithoutBorderTemplate}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property = "IsMouseOver" Value = "True">
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.01" ScaleY="1.01"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="#FFC6CBFF"/>
+                    <Setter Property="ToolTip" Value="Нажмите на кнопку для отображения медифайлов"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonsTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Plantagenet Cherokee"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style TargetType="Image">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="Template" Value="{StaticResource NoScroll}"/>
+        </Style>
+        <Style TargetType="DataGrid" BasedOn="{StaticResource FontStyle}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="RowBackground" Value="Transparent"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="ListViewItem">
+            <Setter Property="ToolTip" Value="{Binding FilePath}"/>
+        </Style>
+        <CollectionViewSource x:Key='ItemsNoSorted' Source="{Binding Files}"/>
+        <CollectionViewSource x:Key='ItemsSortedByNamesAsceding' Source="{Binding Files}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="FileName" Direction="Ascending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key='ItemsSortedByNamesDesceding' Source="{Binding Files}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="FileName" Direction="Descending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key='ItemsSortedByLengthAsceding' Source="{Binding Files}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="FileSize" Direction="Ascending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key='ItemsSortedByLengthDesceding' Source="{Binding Files}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="FileSize" Direction="Descending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key='ItemsSortedByDateAsceding' Source="{Binding Files}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="LastChangeDate" Direction="Ascending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key='ItemsSortedByDateDesceding' Source="{Binding Files}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="LastChangeDate" Direction="Descending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
+    <ScrollViewer Background="Transparent" x:Name="Scroll">
+        <StackPanel>
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Images/main_fon.jpg" Stretch="Fill" TileMode="None"/>
+            </StackPanel.Background>
+            <TextBlock Style="{StaticResource FontMainTextBoxStyle}" FontWeight="Bold" Margin="20,10,0,0" FontSize="18">
+            Загрузка файлов на компьютер</TextBlock>
+            <TextBlock Style="{StaticResource FontMainTextBoxStyle}" Margin="30,10,15,8">
+            Для загрузки файла из смартфона на диск компьютера укажите его формат!</TextBlock>
+            <Separator/>
+            <Grid Margin="10,5,10,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Command="{Binding Path=DataContext.ShowMediaFiles, RelativeSource={RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{x:Static data:TypeFile.TextFile}">
+                    <StackPanel>
+                        <Image Source="/Images/text.png"/>
+                        <TextBlock Style="{StaticResource ButtonsTextBlockStyle}">Текстовые документы, файлы, таблицы</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="1" Command="{Binding Path=DataContext.ShowMediaFiles, RelativeSource={RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}}}" CommandParameter="{x:Static data:TypeFile.Photo}">
+                    <StackPanel>
+                        <Image Source="/Images/photo.png"/>
+                        <TextBlock Style="{StaticResource ButtonsTextBlockStyle}">Графические картинки, сканы документов</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="2" Command="{Binding Path=DataContext.ShowMediaFiles, RelativeSource={RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}}}" CommandParameter="{x:Static data:TypeFile.Video}">
+                    <StackPanel>
+                        <Image Source="/Images/mp4.png"/>
+                        <TextBlock Style="{StaticResource ButtonsTextBlockStyle}">Видео .mp4</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="3" Command="{Binding Path=DataContext.ShowMediaFiles, RelativeSource={RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}}}" CommandParameter="{x:Static data:TypeFile.Music}">
+                    <StackPanel>
+                        <Image Source="/Images/mp3.png"/>
+                        <TextBlock Style="{StaticResource ButtonsTextBlockStyle}">Аудио .mp3</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="4" Command="{Binding Path=DataContext.ShowMediaFiles, RelativeSource={RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}}}" CommandParameter="{x:Static data:TypeFile.Others}">
+                    <StackPanel>
+                        <Image Source="/Images/archive.png"/>
+                        <TextBlock Style="{StaticResource ButtonsTextBlockStyle}">Архивы и другие документы</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <TextBlock Visibility= "{Binding LoadingTextVisibilty}" Style="{StaticResource FontMainTextBoxStyle}" 
+                       HorizontalAlignment="Center" Margin="0,0,0,10" Text="Идет поиск файлов..." Height="24">
+                <TextBlock.Triggers>
+                    <EventTrigger RoutedEvent="TextBlock.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty = "FontSize">
+                                    <DoubleAnimation From = "14" To = "17" Duration = "0:0:2" RepeatBehavior="Forever" AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </TextBlock.Triggers>
+            </TextBlock>
+            <ListView x:Name="ListViewItems" Visibility="{Binding ListViewVisibility}">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Button Style="{StaticResource ButtonMainStyle}" MouseDoubleClick="ShowMediaFile">
+                                <StackPanel>
+                                    <Image Source="{Binding Image}" MaxHeight="140" MaxWidth="160" />
+                                    <TextBlock Text="{Binding FileName}" Style="{StaticResource ButtonsTextBlockStyle}"
+                                           MaxWidth="140" FontSize="16"/>
+                                </StackPanel>
+                            </Button>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{StaticResource ButtonMainStyle}" ToolTip="Cкачать" Click="LoadFileToComputer">
+                                    <Image Source="/Images/load.png" Width="20"/>
+                                </Button>
+                                <Button Grid.Column="1" Style="{StaticResource ButtonMainStyle}" ToolTip="Просмотреть" Click="ShowMediaFile">
+                                    <Image Source="/Images/watch.png" Width="20"/>
+                                </Button>
+                                <Button Grid.Column="2" Style="{StaticResource ButtonMainStyle}" ToolTip="Удалить" Click="DeleteFileFromPhone">
+                                    <Image Source="/Images/delete.png" Width="20"/>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView x:Name="GridViewItems" Visibility="{Binding GridViewVisibility}" Grid.IsSharedSizeScope="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource ButtonMainStyle}" MouseDoubleClick="ShowMediaFile">
+                            <Grid Height="40" Margin="20" Width="{Binding Path=ActualWidth, 
+                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, 
+                                    Converter={StaticResource ConverterWidth}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="30" Source="{Binding Image}" Margin="0,0,10,0"/>
+                                    <TextBlock Style="{StaticResource FontMainTextBoxStyle}" Text="{Binding FileName}"/>
+                                </StackPanel>
+                                <TextBlock Style="{StaticResource FontMainTextBoxStyle}" Text="{Binding FileSize, 
+                                            Converter={StaticResource ConverterFileSize}}" Grid.Column="1"/>
+                                <TextBlock Style="{StaticResource FontMainTextBoxStyle}" Grid.Column="2" Text="{Binding LastChangeDate, 
+                                            Converter={StaticResource ConverterFileData}}"/>
+                                <Button Grid.Column="3" Style="{StaticResource ButtonMainStyle}" ToolTip="Cкачать" Click="LoadFileToComputer">
+                                    <Image Source="/Images/load.png" Width="20"/>
+                                </Button>
+                                <Button Grid.Column="4" Style="{StaticResource ButtonMainStyle}" ToolTip="Просмотреть" Click="ShowMediaFile">
+                                    <Image Source="/Images/watch.png" Width="20"/>
+                                </Button>
+                                <Button Grid.Column="5" Style="{StaticResource ButtonMainStyle}" ToolTip="Удалить" Click="DeleteFileFromPhone">
+                                    <Image Source="/Images/delete.png" Width="20"/>
+                                </Button>
+                            </Grid>
+                        </Button>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

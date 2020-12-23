@@ -1,0 +1,73 @@
+﻿<Window x:Class="SmartfonManager.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartfonManager"
+        xmlns:commands="clr-namespace:SmartfonManager.Commands"
+        mc:Ignorable="d"
+        Title="Выбор устройства" Height="650" Width="650" Icon="/Images/ico.ico" ResizeMode="NoResize"
+        x:Name="RegisterWnd"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="Header" TargetType="TextBlock" BasedOn="{StaticResource FontMainTextBoxStyle}">
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="Info" TargetType="TextBlock" BasedOn="{StaticResource InfoBoxStyle}">
+            <Setter Property="Margin" Value="15,10,15,0"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,50,0,0">
+            <TextBlock Style="{StaticResource Header}" HorizontalAlignment="Center">Выберите подключаемое устройство</TextBlock>
+            <TextBlock Style="{StaticResource Info}" HorizontalAlignment="Center" TextAlignment="Center">
+                Для корректной передачи файлов в настройках USB подключения своего устройства выберите пункт "Передача данных"
+            </TextBlock>
+            <Border Background="#FFCFCEF0" Margin="10,20,10,0" Padding="0,20,0,20" CornerRadius="10">
+                <ListBox x:Name="DevicesListBox" BorderThickness="0" FontFamily="Lucida Sans" FontSize="17" HorizontalAlignment="Center"
+                     ItemsSource="{Binding Devices}" Background="Transparent" MaxHeight="80">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5,0,0,5">
+                                <TextBlock Text="{Binding Manufacturer}"/>
+                                <TextBlock Text="{Binding FriendlyName}" Margin="20,0,0,0"/>
+                                <TextBlock Text="{Binding Description}" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+        </StackPanel>
+        <DockPanel Grid.Row="1" LastChildFill="False" HorizontalAlignment="Right" Margin="0,0,40,0">
+            <Button Height="35" Width="150" Style="{StaticResource ButtonLoadStyle}" FontSize="14" Content="Перезагрузить"
+                        Command="{Binding Path=DataContext.ReloadDevice, RelativeSource={RelativeSource Mode=FindAncestor,
+                        AncestorType={x:Type Window}}}" CommandParameter="{Binding ElementName=RegisterWnd, Path=DataContext.Devices}"/>
+            <Button Height="35" Width="150" Margin="30,0,0,0" Style="{StaticResource ButtonLoadStyle}" FontSize="14"
+                    Content="Выбрать" Click="ChooseButton_Click"/>
+        </DockPanel>
+        <DockPanel Grid.Row="2">
+            <Separator DockPanel.Dock="Top"/>
+            <DockPanel Margin="0,30,0,0" DockPanel.Dock="Bottom" Height="110" LastChildFill="False">
+                <DockPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FF121940" Offset="1"/>
+                    </LinearGradientBrush>
+                </DockPanel.Background>
+                <TextBlock Style="{StaticResource Info}" Foreground="White" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                Smartfon Manager Стеклов В.В.</TextBlock>
+            </DockPanel>
+            <TextBlock Style="{StaticResource Info}" TextAlignment="Justify" Margin="30,10,30,0">Программа представляет собой файловый синхронизатор между 
+            компьютером, работающим на операционной системе Windows, и подключенным к 
+            нему через USB порт мобильным телефоном. Программа предоставляет возможность обмена медиафайлами между компьютером
+            и смартфоном.
+            </TextBlock>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,117 @@
+﻿<Window x:Class="SmartfonManager.Controls.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartfonManager.Controls"
+        mc:Ignorable="d"
+        Title="Настройки" Height="700" Width="650" ResizeMode="NoResize" Icon="/Images/ico.ico"
+        Closing="Window_Closing"
+        x:Name="SettingsWnd" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <Style x:Key="Header" TargetType="TextBlock" BasedOn="{StaticResource FontMainTextBoxStyle}">
+            <Setter Property="Margin" Value="10,10,15,0"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="Info" TargetType="TextBlock" BasedOn="{StaticResource InfoBoxStyle}">
+            <Setter Property="Margin" Value="15,10,15,0"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="ControlsStyle" BasedOn="{StaticResource FontStyle}" TargetType="ToggleButton">
+            <Setter Property="ToggleButton.FontSize" Value="14"/>
+            <Setter Property="ToggleButton.Margin" Value="0,0,20,0"/>
+        </Style>
+        <Style TargetType="RadioButton" BasedOn="{StaticResource ControlsStyle}"></Style>
+        <Style TargetType="CheckBox" BasedOn="{StaticResource ControlsStyle}"></Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TabControl BorderThickness="0" Background="Transparent">
+            <TabItem BorderThickness="0" Background="Transparent" Height="40">
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource Info}" VerticalAlignment="Center">Подключение и загрузка</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource Header}">Настройка подключения телефона</TextBlock>
+                        <TextBlock Style="{StaticResource Info}">Параметры подключения по USB проводу</TextBlock>
+                        <DockPanel LastChildFill="False" Margin="30,10,0,0">
+                            <CheckBox IsEnabled="False" IsChecked="{Binding ActiveTelephone}">Телефон подключен</CheckBox>
+                            <CheckBox x:Name="NoActive" IsEnabled="False" IsChecked="{Binding NoActiveTelephone}">Некорректное подключение телефона</CheckBox>
+                        </DockPanel>
+                        <Button Margin="30,15,0,30" HorizontalAlignment="Left" Height="30" Width="210" Style="{StaticResource ButtonLoadStyle}"
+                                FontSize="14" IsEnabled="{Binding ElementName=NoActive, Path=IsChecked}">
+                            Переподключить телефон</Button>
+                        <TextBlock Style="{StaticResource Header}">Параметры загрузки медиафайлов</TextBlock>
+                        <TextBlock Style="{StaticResource Info}">Укажите путь, где будут распологаться скаченные файлы с телефона</TextBlock>
+                        <DockPanel LastChildFill="False" Margin="0,15,0,0">
+                            <TextBox x:Name="DirectroyPath" Margin="30,0,0,0" Width="500" HorizontalScrollBarVisibility="Auto" 
+                                    VerticalAlignment="Center" FontSize="14" Text="{Binding PathToLoad, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Button Background="Transparent" Style="{StaticResource ButtonMainStyle}" Margin="10,0,0,0"
+                                    Command="{Binding Path=DataContext.DirPathAdd, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                                    CommandParameter="{Binding ElementName=SettingsWnd, Path=DataContext}">
+                                <Image Source="/Images/found_file.png" Width="40" Height="40" Stretch="Fill"/>
+                            </Button>
+                        </DockPanel>
+                        <TextBlock Style="{StaticResource Info}">Удаление кэша просмотренных файлов при выходе из программы</TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
+                            <RadioButton IsChecked="{Binding DeleteAuto}">Удалить</RadioButton>
+                            <RadioButton IsChecked="{Binding NoDelete}">Сохранить</RadioButton>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem BorderThickness="0" Background="Transparent" Height="40">
+                <TabItem.Header>
+                    <TextBlock Style="{StaticResource Info}" VerticalAlignment="Center">Отображение медиафайлов</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource Header}">Параметры отображения медиафайлов</TextBlock>
+                        <TextBlock Style="{StaticResource Info}">Изменить вид представления данных</TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="20,10,0,10">
+                            <RadioButton IsChecked="{Binding ListView}">Сетка</RadioButton>
+                            <RadioButton IsChecked="{Binding GridView}">Таблица</RadioButton>
+                        </StackPanel>
+                        <TextBlock Style="{StaticResource Info}">Сортировать медиафайлы при отображении их на экран пользователя
+                        </TextBlock>
+                        <WrapPanel Orientation="Horizontal" Margin="20,10,0,10">
+                            <RadioButton IsChecked="{Binding NoSorted}">Не сортировать</RadioButton>
+                            <RadioButton IsChecked="{Binding SortedByDate}">Сортировать по дате создания</RadioButton>
+                            <RadioButton IsChecked="{Binding SortedByLength}">Сортировать по размеру</RadioButton>
+                            <RadioButton IsChecked="{Binding SortedByName}" Margin="0,10,0,0">Сортировать по имени файла</RadioButton>
+                        </WrapPanel>
+                        <TextBlock Style="{StaticResource Info}">Параметры сортировки
+                        </TextBlock>
+                        <WrapPanel Orientation="Horizontal" Margin="20,10,0,10">
+                            <RadioButton IsChecked="{Binding SortedDescending}">По убыванию</RadioButton>
+                            <RadioButton IsChecked="{Binding SortedAsceding}">По возрастанию</RadioButton>
+                        </WrapPanel>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            </TabControl>
+            <DockPanel Grid.Row="2">
+            <Separator DockPanel.Dock="Top"/>
+            <DockPanel Margin="0,30,0,0" DockPanel.Dock="Bottom" Height="110" LastChildFill="False">
+                <DockPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FF121940" Offset="1"/>
+                    </LinearGradientBrush>
+                </DockPanel.Background>
+                <TextBlock Style="{StaticResource Info}" Foreground="White" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                Smartfon Manager Стеклов В.В.</TextBlock>
+            </DockPanel>
+            <TextBlock Style="{StaticResource Info}" TextAlignment="Justify" Margin="30,10,30,0">Программа представляет собой файловый синхронизатор между 
+            компьютером, работающим на операционной системе Windows, и подключенным к 
+            нему через USB порт мобильным телефоном. Программа предоставляет возможность обмена медиафайлами между компьютером
+            и смартфоном.
+            </TextBlock>
+        </DockPanel>
+    </Grid>
+</Window>

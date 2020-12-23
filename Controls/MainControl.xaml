@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="SmartfonManager.Controls.MainControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SmartfonManager.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="724">
+    <UserControl.Resources>
+        <Style TargetType="Image">
+            <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="250"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#FF1B2232"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Segoe Script"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource MainFon}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Margin="15,10,0,10" Style="{StaticResource FontMainTextBoxStyle}" FontWeight="Bold" 
+                       Text="Добро пожаловать в Phone Manager"/>
+            <TextBlock Margin="20,10,10,10" Style="{StaticResource FontMainTextBoxStyle}" FontSize="16">Файловый синхронизатор между компьютером
+                и подключенным к нему через USB порт смартфоном</TextBlock>
+            <Border Height="Auto" MaxWidth="1000" BorderThickness="1.5" BorderBrush="#FF9EBEEE" CornerRadius="10" Margin="50,0,35,5"
+                HorizontalAlignment="Left">
+                <TextBlock Margin="10" Style="{StaticResource FontMainTextBoxStyle}" FontStyle ="Italic">
+                    Для обмена медиафайлами между компьютером и смартфоном нажмите на одну из кнопок
+                </TextBlock>
+            </Border>
+            <Separator/>
+        </StackPanel>
+
+        <DockPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="LoadFrom" Margin="0,0,10,0" Style="{StaticResource ButtonMainStyle}" Click="LoadControl"
+                    MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <StackPanel>
+                    <Image Source="/Images/computer.png"/>
+                    <Label x:Name="LoadFromLabel">Сохранить данные в компьютер</Label>
+                </StackPanel>
+            </Button>
+            <Button x:Name="LoadTo" Margin="10,0,0,0" Style="{StaticResource ButtonMainStyle}" Click="LoadControl" 
+                    MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <StackPanel>
+                    <Image Source="/Images/android.png"/>
+                    <Label x:Name="LoadToLabel" >Загрузка данных в телефон</Label>
+                </StackPanel>
+            </Button>
+        </DockPanel>
+
+        <DockPanel Grid.Row="4" Grid.ColumnSpan="3">
+            <DockPanel DockPanel.Dock="Top">
+                <TextBlock Style="{StaticResource FontMainTextBoxStyle}">Version 1.0.0</TextBlock>
+                <Separator/>
+            </DockPanel>
+            <TextBlock x:Name="InfoBox" Text="{Binding Path=TextInfo}" Style="{StaticResource InfoBoxStyle}"></TextBlock>
+        </DockPanel>
+    </Grid>
+</UserControl>
